@@ -1,6 +1,6 @@
 <template>
   <ul class="list" v-if="notes.length !== 0">
-    <li class="list__item" v-for="(note, index) in notes" :key="note">
+    <li class="list__item" v-for="(note, index) in notes" :key="index">
       {{ note }}
       <ButtonTodo class="list__btn list__btn_done" @click="deleteNote(index)">Завершить</ButtonTodo>
       <ButtonTodo class="list__btn list__btn_delete" @click="deleteNote(index)">Провалить</ButtonTodo>
@@ -13,16 +13,21 @@
 import ButtonTodo from './ButtonTodo.vue'
 
 export default {
-  data() {
-    return {
-      notes: []
-    }
-  },
+  // data() {
+  //   return {
+  //     notes: []
+  //   }
+  // },
   components: {
     ButtonTodo
   },
-  created() {
-    this.notes = this.$store.state.notes
+  // created() {
+  //   // this.notes = this.$store.state.notes
+  // },
+  computed: {
+    notes() {
+      return this.$store.state.notes
+    }
   },
   methods: {
     deleteNote(index) {

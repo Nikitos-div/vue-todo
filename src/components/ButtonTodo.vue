@@ -1,13 +1,27 @@
 <template>
-  <button class="class" @click="addNewNote">Добавить</button>
+  <button :class="customClass" @click="onClick">
+    <slot></slot>
+  </button>
 </template>
 
 <script>
 export default {
   name: 'ButtonTodo',
   props: {
-    class: String,
-    addNewNote: Function
+    customClass: {
+      type: String,
+      default: '',
+    },
+    textButton: {
+      type: String,
+      default: ''
+    }
+    // addNewNote: Function
+  }, 
+  methods: {
+    onClick() {
+      this.$emit('customEvent')
+    }
   }
 }
 </script>

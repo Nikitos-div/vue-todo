@@ -1,17 +1,18 @@
 <template>
   <div id="app">
     <TodoLayout>
-      <TiltleTodo title="Заметки" />
-      <FormTodo />
-      <ListTodo />
+      <!-- <TiltleTodo title="Заметки" /> -->
+      <router-view></router-view>
+      <!-- <FormTodo />
+      <ListTodo /> -->
     </TodoLayout>
   </div>
 </template>
 
 <script>
-import TiltleTodo from './components/TitleTodo.vue';
-import ListTodo from './components/ListTodo.vue';
-import FormTodo from './components/FormTodo.vue';
+// import TiltleTodo from './components/TitleTodo.vue';
+// import ListTodo from './components/ListTodo.vue';
+// import FormTodo from './components/FormTodo.vue';
 import TodoLayout from './layouts/TodoLayout.vue';
 
 export default {
@@ -23,9 +24,9 @@ export default {
   },
   components: {
     TodoLayout,
-    TiltleTodo,
-    FormTodo,
-    ListTodo
+    // TiltleTodo,
+    // FormTodo,
+    // ListTodo
   }
 }
 </script>

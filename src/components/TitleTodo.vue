@@ -5,6 +5,11 @@
 <script>
 export default {
   name: 'TiltleTodo',
-  props: ['title']
+  props: {
+    title: {
+      type: String,
+      default: 'default'
+    }
+  }
 }
 </script>

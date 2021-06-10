@@ -1,13 +1,25 @@
 <template>
-  <input :placeholder="inputPlaceholder" type="text" class="note-title" v-model="titleValue" @keypress.enter="addNewNote" />
+  <input v-bind="$attrs" :placeholder="inputPlaceholder" type="text" class="note-title" v-model='model'  />
 </template>
 
 <script>
 export default {
   name: 'InputTodo',
+  model: {
+    prop: 'value',
+    event: 'input'
+  },
   props: {
-    inputPlaceholder: String
-  }
+    inputPlaceholder: {
+      type: String,
+      default: () => 'плейсхолдер'
+    },
+    value: {
+      type:String,
+      default: ''
+    }
+  },
+  
 }
 </script>
 

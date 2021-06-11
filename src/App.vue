@@ -1,43 +1,53 @@
 <template>
-  <div id="app">
-    <TodoLayout>
-      <TiltleTodo :title="titleTodo" />
-      <FormTodo />
-      <ListTodo />
-    </TodoLayout>
+  <div id="nav" >
+    <router-link :to="{name: 'AllToDoPage'}">Создать заметку</router-link> 
+    <router-link to="/create-todo-page">Список заметок</router-link> 
+    <!-- через слеш - очень плохо -->
   </div>
-  <!-- <router-view /> -->
+  <!-- <div @click='routeTo' style='width: 20px; height: 20px; background: red;'></div> -->
+  <router-view/>
 </template>
 
 <script>
-// import TiltleTodo from './components/TitleTodo.vue';
-// import ListTodo from './components/ListTodo.vue';
-// import FormTodo from './components/FormTodo.vue';
-import TodoLayout from './layouts/TodoLayout.vue';
-
-export default {
-  name: 'App',
-  data() {
-    return {
-      titleTodo: 'Заметки'
-    }
-  },
-  components: {
-    TodoLayout,
-    // TiltleTodo,
-    // FormTodo,
-    // ListTodo
-  }
-}
+ export default {
+   name: 'App',
+  //  methods: {
+  //    routeTo() {
+  //      this.$router.push({name: 'AllToDoPage'})
+  //    }
+  //  }
+ }
 </script>
 
-<style>
+
+
+
+<style lang="scss">
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+
+}
+
+#nav {
+  padding: 30px;
+  display:flex;
+  flex-direction: row;
+  min-width: 400px;
+  justify-content: space-around;
+
+  a {
+    font-weight: bold;
+    color: #2c3e50;
+    outline: none;
+
+    &.router-link-exact-active {
+      color: #42b983;
+    }
+  }
 }
 </style>

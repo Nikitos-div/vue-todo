@@ -1,6 +1,6 @@
 <template>
-  <button :class="customClass" @click="onClick">
-    <slot></slot>
+  <button :class="customClass" @click="customClick">
+    <slot />
   </button>
 </template>
 
@@ -10,20 +10,14 @@ export default {
   props: {
     customClass: {
       type: String,
-      default: '',
+      default: 'list__btn'
     },
-    textButton: {
-      type: String,
-      default: ''
-    }
-    // addNewNote: Function
-  }, 
-  methods: {
-    onClick() {
-      this.$emit('customEvent')
+    customClick: {
+      type: Function,
+      default: () => (console.log('error click'))
     }
   }
-}
+};
 </script>
 
 <style scoped>

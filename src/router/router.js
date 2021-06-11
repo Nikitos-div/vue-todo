@@ -6,15 +6,14 @@ import ListTodoPage from '../views/ListTodoPage.vue';
 const routes = [
   {
     path: '/',
-    name: 'vTodo',
-    component: FormTodoPage,
+    name: 'FormTodo',
+    component: FormTodoPage
   },
-   {
-      path: 'todo-list',
-      name: 'todoList',
-      component: ListTodoPage
-    }
- 
+  {
+    path: '/todo-list',
+    name: 'ListTodo',
+    component: ListTodoPage
+  }
 ]
 
 const router = createRouter({

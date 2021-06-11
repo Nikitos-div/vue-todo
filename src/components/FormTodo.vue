@@ -1,17 +1,16 @@
 <template>
   <div class="form-control">
-    <input  class='note-title' :placeholder="placeholderTitle" v-model='titleValue' />
-    <input  :placeholder="inputPlaceholder" type="text" class="note-title" v-model='inputValue'   />
+    <input :placeholder="placeholderTitle" type="text" class="note-title" v-model="titleValue" @keypress.enter="addNewNote" />
+    <input :placeholder="placeholderNote" type="text" class="note-title" v-model="inputValue" @keypress.enter="addNewNote" />
+    <!-- <InputTodo :inputPlaceholder="placeholderTitle" v-model="titleValue" @keypress.enter="addNewNote" />
+    <InputTodo :inputPlaceholder="placeholderNote" v-model="inputValue" @keypress.enter="addNewNote" /> -->
     <PriorityTodo />
-    <ButtonTodo :customClass="'btn add'" @customEvent='addNewNote' >
-      {{ addButtonText }}
-    </ButtonTodo>
+    <ButtonTodo :class="'list__btn add'" @click="addNewNote">{{ addButtonText }}</ButtonTodo>
   </div>
 </template>
 
 <script>
 // import InputTodo from '../components/InputTodo.vue';
-//TODO разобраться что здесь происходит
 import PriorityTodo from '../components/PriorityTodo.vue';
 import ButtonTodo from '../components/ButtonTodo.vue';
 
@@ -22,7 +21,6 @@ export default {
       placeholderTitle: 'Введите название заметки',
       placeholderNote: 'Содержание заметки',
       addButtonText: 'Добавить',
-      title: '',
       titleValue: '',
       inputValue: '',
       singleNote: '',
@@ -36,8 +34,9 @@ export default {
   methods: {
     addNewNote() {
       if(this.inputValue && this.titleValue) {
-      
-        this.$store.dispatch('addNote', `${this.titleValue} ${this.inputValue} ${this.priorityValue}`);
+        console.log('click add')
+        this.singleNote = `${this.titleValue + this.inputValue + this.priorityValue}`
+        this.$store.dispatch('addNote', this.singleNote);
         this.inputValue = ''
       }
     },

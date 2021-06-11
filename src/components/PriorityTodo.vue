@@ -37,8 +37,17 @@ export default {
     return {
       priorityValue: ''
     }
+  },
+  props: {
+    inputValue: {
+      type: String
+    },
+    customPress: {
+      type: Function,
+      default: () => console.log('error')
+    }
   }
-}
+};
 </script>
 
 <style scoped>
